@@ -1,0 +1,2 @@
+import type { ReactNode } from 'react';
+export default function Section({ id, number, title, description, children }: { id: string; number: string; title: string; description?: string; children: ReactNode }) { return <section id={id} className="section"><div className="section-heading"><div><span className="eyebrow">{number} / {id.toUpperCase()}</span><h2>{title}</h2></div>{description && <p>{description}</p>}</div>{children}</section>; }
