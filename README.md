@@ -1,82 +1,131 @@
-# 허성빈 개발자 포트폴리오
+# 허성빈 | Web & Application Developer
 
-신규 웹 시스템 구축, 기존 시스템 고도화, 데이터 연동 및 운영 장애 대응 경험을 담은 정적 포트폴리오입니다. 제공된 경력만 사용하고 공개 개인 프로젝트인 Architecture Diagram Editor를 수록하고, 나머지 개인·팀 프로젝트는 Coming Soon 상태로 준비했습니다.
+신규 시스템 구축부터 기존 시스템 고도화, 데이터 연동과 운영 장애 대응까지의 경험을 담은 개발자 포트폴리오입니다.
 
-## 기술 스택
+**Build · Understand · Solve**를 중심으로 경력, 문제 해결 과정과 개인 프로젝트를 소개합니다. React·TypeScript·Vite로 구현한 정적 단일 페이지이며, 콘텐츠는 TypeScript 데이터 파일에서 관리합니다.
 
-React · TypeScript · Vite · CSS. 외부 서버 없이 동작하며 UI 라이브러리를 사용하지 않습니다.
+## 주요 구성
 
-## 로컬 실행 및 빌드
+| 섹션 | 내용 |
+| --- | --- |
+| About | 서비스 전체 흐름을 이해하며 개발하는 방식 |
+| Experience | 인콤(주) 근무 기간(2023.08–2026.08)의 구축·고도화·연동 경험 |
+| Projects | 개인 프로젝트 3개와 준비 중인 팀 프로젝트 1개 |
+| Troubleshooting | 문제·분석·판단·해결·검증 순서의 운영 장애 대응 사례 |
+| Skills | 실제 사용 맥락에 따른 기술 분류 |
+| Development Approach | Build · Understand · Solve · Improve |
+| Contact | 이메일·GitHub 및 이력서 링크 영역 |
+
+### 개인 프로젝트
+
+| 프로젝트 | 소개 | 링크 |
+| --- | --- | --- |
+| Architecture Diagram Editor | URL 공유, 그룹 편집·자동 배치와 파일 출력을 지원하는 아키텍처 편집기 | [소스](https://github.com/HeoSeongbin/Architecture-) · [데모](https://heoseongbin.github.io/Architecture-/) |
+| DocumentMask Studio | 이미지·PDF·TIFF 편집과 마스킹 결과 다운로드 도구 | [소스](https://github.com/HeoSeongbin/MaskingViewer) · [데모](https://heoseongbin.github.io/MaskingViewer/) |
+| InterfaceFlow Lab | 전문 검증·매핑, 장애 재현과 재시도·복구를 추적하는 연동 실험 플랫폼 | [소스 및 로컬 실행 안내](https://github.com/HeoSeongbin/interfaceflow-lab) |
+
+위 프로젝트는 각각 별도 저장소에서 관리합니다. 이 저장소에는 포트폴리오 웹사이트만 포함합니다.
+
+## 기술과 기능
+
+- React · TypeScript · Vite · CSS, 별도 UI 라이브러리 없이 구현
+- 섹션 이동과 현재 메뉴 표시, 모바일 내비게이션
+- 개인·팀 프로젝트 필터 및 상세 모달, 문제 해결 사례 Accordion
+- 키보드 포커스, 본문 바로가기, `prefers-reduced-motion` 대응
+- 반응형 레이아웃, 기본 SEO·Open Graph 메타데이터
+- GitHub Actions 기반 GitHub Pages 배포 워크플로
+
+## 로컬 실행
+
+Node.js 22 이상과 npm을 준비합니다.
 
 ```bash
 npm install
 npm run dev
+```
+
+터미널에 표시되는 주소를 브라우저에서 엽니다. 서버 종료는 `Ctrl + C`입니다.
+
+Windows PowerShell에서 `npm.ps1` 실행 정책 오류가 발생하면 `npm.cmd install`, `npm.cmd run dev`를 사용합니다.
+
+### 빌드와 미리보기
+
+```bash
 npm run build
 npm run preview
 ```
 
-빌드는 TypeScript 검사 후 `dist/`를 생성합니다. Node.js 22 이상을 권장합니다.
+빌드는 TypeScript 검사 후 `dist/`를 생성합니다. 미리보기 주소도 터미널에서 확인합니다. CI처럼 lock 파일 기준으로 설치하려면 `npm ci`를 사용합니다.
 
 ## 프로젝트 구조
 
 ```text
+.github/workflows/deploy.yml   # GitHub Pages 배포
+public/                       # favicon, OG 이미지 placeholder
 src/
-  components/Section.tsx
-  sections/Projects.tsx
-  hooks/useActiveSection.ts
-  data/profile.ts
-  data/experiences.ts
-  data/projects.ts
-  data/troubleshooting.ts
-  data/skills.ts
-  types/index.ts
-  App.tsx
-  main.tsx
-  styles.css
-public/
-  favicon.svg
-  og-placeholder.svg
+  components/Section.tsx       # 공통 섹션
+  sections/Projects.tsx        # 프로젝트 필터·상세 모달
+  hooks/useActiveSection.ts   # 현재 섹션 추적
+  data/                       # 프로필·경력·프로젝트·문제 해결·기술
+  types/index.ts              # 콘텐츠 타입
+  App.tsx                     # 전체 페이지 구성
+  main.tsx                    # 진입점
+  styles.css                  # 공통 스타일·반응형
 ```
 
-## 데이터 수정
+## 콘텐츠 수정
 
-- `profile.ts`: 이름, 소개, 회사, 기간, 근무 상태(employmentStatus), 경력 표기(careerLabel), email / github / resume / blog. 빈 외부 링크는 Hero에서 숨겨지고 Contact에서는 준비 중으로 표시됩니다. Blog는 값 입력 시 표시됩니다.
-- `experiences.ts`: 경력 목록, 역할, 주요 내용, 기술 및 선택적인 작업 흐름.
-- `troubleshooting.ts`: 문제 해결 사례의 단계별 기록.
-- `skills.ts`: 기술 카테고리와 실제 사용 맥락.
-- `projects.ts`: 개인·팀 프로젝트 목록. 빈 프로젝트에는 실제 경험이나 성과를 기재하지 않았습니다.
+| 파일 | 수정 내용 |
+| --- | --- |
+| `src/data/profile.ts` | 이름, 소개, 근무 기간·상태, 경력 표기, 연락처·외부 링크, 개발 방식 |
+| `src/data/experiences.ts` | 경력별 역할, 기술, 주요 내용과 작업 흐름 |
+| `src/data/projects.ts` | 개인·팀 프로젝트 정보와 GitHub·Demo 링크 |
+| `src/data/troubleshooting.ts` | 문제 해결 사례의 단계별 설명 |
+| `src/data/skills.ts` | 기술 카테고리와 사용 맥락 |
 
-새 프로젝트는 `projects` 배열에 다음과 같이 추가합니다. 기존 초기 항목을 교체해도 됩니다.
+GitHub·이력서 주소가 비어 있으면 Hero 버튼은 숨기고 Contact에는 준비 중으로 표시합니다. Blog는 주소를 입력하면 Contact에 추가됩니다.
+
+### 프로젝트 추가
+
+`src/data/projects.ts`의 `projects` 배열에 다음 형태의 객체를 추가합니다. 타입은 `src/types/index.ts`의 `Project`를 참고하세요.
 
 ```ts
-projects.push({
-  id: 'my-project',
-  type: 'personal', // 또는 'team'
-  title: '실제 프로젝트 이름',
-  status: 'Published', // 준비 중이면 'Coming Soon'
+{
+  id: 'personal-4', // 중복되지 않는 ID
+  type: 'personal', // 'personal' | 'team'
+  title: '프로젝트 이름',
+  status: 'Published', // 'Published' | 'Coming Soon'
   summary: '한 줄 소개',
-  description: '상세 설명',
+  description: '목적과 주요 동작에 대한 설명',
   techStack: ['React', 'TypeScript'],
-  responsibilities: ['실제 담당 역할'],
-  highlights: ['확인 가능한 주요 내용'],
-  githubUrl: 'https://github.com/사용자/저장소',
-  demoUrl: 'https://실제-데모-주소',
-  // thumbnail: '이미지 주소',
-});
+  responsibilities: ['직접 담당한 역할'],
+  highlights: ['구현 내용과 기술적 선택'],
+  // githubUrl, demoUrl, thumbnail은 선택 항목
+},
 ```
 
-필터, 상세 모달, GitHub / Demo 링크는 데이터에 따라 자동으로 반영됩니다. 모달은 Escape로 닫을 수 있고 기본 dialog의 포커스 제어를 사용합니다.
+필터 개수와 상세 모달은 데이터에 따라 자동 반영됩니다. `githubUrl`·`demoUrl`이 있는 프로젝트만 해당 링크를 표시합니다. 준비 중인 프로젝트에는 미구현 기능이나 성과를 기재하지 않습니다.
 
 ## GitHub Pages 배포
 
-1. GitHub 저장소를 생성하고 로컬 저장소의 main 브랜치를 push합니다.
-2. GitHub 저장소 Settings → Pages → Build and deployment → Source를 **GitHub Actions**로 설정합니다.
-3. main push 또는 Actions의 수동 실행으로 `.github/workflows/deploy.yml`이 빌드 및 배포합니다.
+1. GitHub 저장소를 만들고 이 프로젝트의 `main` 브랜치를 push합니다.
+2. 저장소 **Settings → Pages → Build and deployment → Source**를 **GitHub Actions**로 설정합니다.
+3. **Actions → Deploy portfolio to GitHub Pages**에서 실행 결과를 확인합니다. 이후 `main` push 시 자동 배포되며 수동 실행도 가능합니다.
+4. 배포가 성공하면 Pages 설정 또는 Actions의 배포 결과에서 실제 사이트 주소를 확인합니다.
 
-Vite `base: './'`로 저장소 하위 경로에서도 빌드 자산을 참조합니다. 클라이언트 라우터 없이 해시 기반 섹션 이동을 사용합니다. 다른 정적 호스팅에는 `dist/`를 업로드하세요. 배포 워크플로는 저장소가 GitHub에 연결되고 Pages가 활성화된 이후 동작합니다.
+워크플로는 Node.js 22에서 `npm ci`와 `npm run build`를 실행하고 `dist/`를 배포합니다. Vite의 `base: './'`와 해시 기반 섹션 이동으로 저장소 하위 경로를 지원합니다. 다른 정적 호스팅에도 `dist/`를 게시할 수 있습니다.
 
-## SEO 및 자산
+## 메타데이터와 자산
 
-`index.html`에서 제목, description, Open Graph를 수정합니다. favicon과 OG 이미지는 `public/`의 placeholder를 교체하세요. 소셜 미리보기의 호환성을 위해 실제 OG 이미지를 PNG/JPG로 교체하고 배포 후 `og:image`에 절대 URL, `og:url`에 사이트 주소를 설정하세요. 현재 placeholder SVG는 레이아웃 확인용입니다.
+- `index.html`: 제목, 설명, Open Graph 메타데이터
+- `public/favicon.svg`: 교체 가능한 기본 아이콘
+- `public/og-placeholder.svg`: 미리보기용 OG 이미지
 
-폰트는 Google Fonts의 Noto Sans KR을 사용하고 네트워크가 없으면 시스템 sans-serif로 대체됩니다. 애니메이션을 최소화하고 reduced-motion, 키보드 포커스, 모바일 메뉴 및 의미 있는 HTML을 적용했습니다.
+공개 사이트 주소가 정해지면 `og:url`을 추가하고 `og:image`를 실제 PNG/JPG 이미지의 절대 URL로 바꿉니다. 현재 SVG는 placeholder이며 소셜 서비스별 미리보기 호환성을 보장하지 않습니다.
+
+폰트는 Google Fonts의 Noto Sans KR을 사용하며, 로드되지 않으면 시스템 sans-serif로 대체됩니다.
+
+## 연락처
+
+- Email: [heosb316@gmail.com](mailto:heosb316@gmail.com)
+- GitHub: [HeoSeongbin](https://github.com/HeoSeongbin)
