@@ -10,7 +10,7 @@
 | --- | --- |
 | About | 서비스 전체 흐름을 이해하며 개발하는 방식 |
 | Experience | 인콤(주) 근무 기간(2023.08–2026.08)의 구축·고도화·연동 경험 |
-| Projects | 개인 프로젝트 3개와 준비 중인 팀 프로젝트 1개 |
+| Projects | 공개 개인 프로젝트 3개, 준비 중인 개인 프로젝트 1개와 팀 프로젝트 1개 |
 | Troubleshooting | 문제·분석·판단·해결·검증 순서의 운영 장애 대응 사례 |
 | Skills | 실제 사용 맥락에 따른 기술 분류 |
 | Development Approach | Build · Understand · Solve · Improve |
@@ -28,9 +28,10 @@
 
 ## 기술과 기능
 
-- React · TypeScript · Vite · CSS, 별도 UI 라이브러리 없이 구현
+- React · TypeScript · Vite · CSS, 프로젝트 슬라이더에 Swiper 사용
 - 섹션 이동과 현재 메뉴 표시, 모바일 내비게이션
-- 개인·팀 프로젝트 필터 및 상세 모달, 문제 해결 사례 Accordion
+- 개인·팀 프로젝트 필터, Coverflow 슬라이더와 상세 모달, 문제 해결 사례 Accordion
+- 프로젝트 스와이프·이전/다음 버튼·페이지 선택 및 방향키 이동
 - 키보드 포커스, 본문 바로가기, `prefers-reduced-motion` 대응
 - 반응형 레이아웃, 기본 SEO·Open Graph 메타데이터
 - GitHub Actions 기반 GitHub Pages 배포 워크플로
@@ -91,7 +92,7 @@ GitHub·이력서 주소가 비어 있으면 Hero 버튼은 숨기고 Contact에
 
 ```ts
 {
-  id: 'personal-4', // 중복되지 않는 ID
+  id: 'personal-5', // 중복되지 않는 ID
   type: 'personal', // 'personal' | 'team'
   title: '프로젝트 이름',
   status: 'Published', // 'Published' | 'Coming Soon'

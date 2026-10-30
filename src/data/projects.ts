@@ -65,6 +65,17 @@ export const projects: Project[] = [
     ],
     githubUrl: 'https://github.com/HeoSeongbin/interfaceflow-lab',
   },
+  {
+    id: 'personal-4',
+    type: 'personal',
+    title: 'Personal Project 04',
+    status: 'Coming Soon',
+    summary: '',
+    description: '',
+    techStack: [],
+    responsibilities: [],
+    highlights: [],
+  },
   ...([{ type: 'team', number: 1 }] as const).map(({ type, number }) => ({
     id: `${type}-${number}`, type, title: `Team Project 0${number}`,
     status: 'Coming Soon' as const, summary: '', description: '', techStack: [], responsibilities: [], highlights: [],
