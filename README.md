@@ -10,7 +10,7 @@
 | --- | --- |
 | About | 서비스 전체 흐름을 이해하며 개발하는 방식 |
 | Experience | 인콤(주) 근무 기간(2023.08–2026.08)의 구축·고도화·연동 경험 |
-| Projects | 공개 개인 프로젝트 3개, 준비 중인 개인 프로젝트 1개와 팀 프로젝트 1개 |
+| Projects | 공개 개인 프로젝트 4개와 준비 중인 팀 프로젝트 1개 |
 | Troubleshooting | 문제·분석·판단·해결·검증 순서의 운영 장애 대응 사례 |
 | Skills | 실제 사용 맥락에 따른 기술 분류 |
 | Development Approach | Build · Understand · Solve · Improve |
@@ -23,6 +23,7 @@
 | Architecture Diagram Editor | URL 공유, 그룹 편집·자동 배치와 파일 출력을 지원하는 아키텍처 편집기 | [소스](https://github.com/HeoSeongbin/Architecture-) · [데모](https://heoseongbin.github.io/Architecture-/) |
 | DocumentMask Studio | 이미지·PDF·TIFF 편집과 마스킹 결과 다운로드 도구 | [소스](https://github.com/HeoSeongbin/MaskingViewer) · [데모](https://heoseongbin.github.io/MaskingViewer/) |
 | InterfaceFlow Lab | 전문 검증·매핑, 장애 재현과 재시도·복구를 추적하는 연동 실험 플랫폼 | [소스 및 로컬 실행 안내](https://github.com/HeoSeongbin/interfaceflow-lab) |
+| ConvertFlow | 이미지·TIFF의 PDF 변환과 재시도·취소·Worker 장애 복구를 관리하는 비동기 문서 처리 플랫폼 | [소스 및 로컬 실행 안내](https://github.com/HeoSeongbin/ConvertFlow) |
 
 위 프로젝트는 각각 별도 저장소에서 관리합니다. 이 저장소에는 포트폴리오 웹사이트만 포함합니다.
 
