@@ -16,7 +16,10 @@ export default function Projects() {
   const dialog = useRef<HTMLDialogElement>(null);
   const slider = useRef<SwiperInstance | null>(null);
   const pointerCard = useRef<{ index: number; wasActive: boolean } | null>(null);
-  const visible = projects.filter(p => filter === 'all' || p.type === filter);
+  const listedProjects = projects.filter(p => !p.hidden);
+  const filters = (['all', 'personal', 'team'] as const).filter(type => type === 'all' || listedProjects.some(p => p.type === type));
+  const effectiveFilter = filters.includes(filter) ? filter : 'all';
+  const visible = listedProjects.filter(p => effectiveFilter === 'all' || p.type === effectiveFilter);
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -27,15 +30,16 @@ export default function Projects() {
   }, []);
 
   const open = (project: Project) => {
+    if (project.detailEnabled === false) return;
     setSelected(project);
     dialog.current?.showModal();
   };
 
   return <Section id="projects" number="03" title="직접 만들고, 구현한 프로젝트" description="개인 프로젝트와 팀 프로젝트의 구현 내용과 기술적 선택을 기록합니다.">
     <div className="filters" role="group" aria-label="프로젝트 유형 필터">
-      {(['all', 'personal', 'team'] as const).map(type => <button key={type} aria-pressed={filter === type} onClick={() => { setActiveIndex(0); setFilter(type); }}>
+      {filters.map(type => <button key={type} aria-pressed={effectiveFilter === type} onClick={() => { setActiveIndex(0); setFilter(type); }}>
         {type === 'all' ? 'All' : type === 'personal' ? 'Personal' : 'Team'}
-        <span>{type === 'all' ? projects.length : projects.filter(p => p.type === type).length}</span>
+        <span>{type === 'all' ? listedProjects.length : listedProjects.filter(p => p.type === type).length}</span>
       </button>)}
     </div>
     <div className="project-showcase" role="region" aria-roledescription="캐러셀" aria-label="프로젝트 둘러보기"
@@ -43,7 +47,7 @@ export default function Projects() {
         if (event.key === 'ArrowRight') { event.preventDefault(); slider.current?.slideNext(); }
         if (event.key === 'ArrowLeft') { event.preventDefault(); slider.current?.slidePrev(); }
       }}>
-      <Swiper key={filter} modules={[EffectCoverflow, A11y]} effect="coverflow" centeredSlides slidesPerView="auto"
+      <Swiper key={effectiveFilter} modules={[EffectCoverflow, A11y]} effect="coverflow" centeredSlides slidesPerView="auto"
         initialSlide={0} spaceBetween={28} grabCursor={visible.length > 1} speed={reducedMotion ? 0 : 420}
         coverflowEffect={{ rotate: reducedMotion ? 0 : 38, stretch: 0, depth: reducedMotion ? 0 : 130, modifier: 1, slideShadows: false }}
         a11y={{ scrollOnFocus: false, containerRoleDescriptionMessage: '프로젝트 슬라이더', itemRoleDescriptionMessage: '프로젝트', slideLabelMessage: '{{index}} / {{slidesLength}}' }}
@@ -59,7 +63,8 @@ export default function Projects() {
               if (clickedSideCard || slider.current.activeIndex !== index) slider.current.slideTo(index);
               else open(project);
             }}>
-          <button className={`project-card project-card-${project.id}`} aria-label={`${project.title} 상세 보기`}
+          <button className={`project-card project-card-${project.id}`} aria-disabled={project.detailEnabled === false ? true : undefined}
+            aria-label={project.detailEnabled === false ? `${project.title} · 개발 진행 중, 상세 공개 예정` : `${project.title} 상세 보기`}
             onFocus={event => {
               if (event.currentTarget.matches(':focus-visible') && slider.current?.activeIndex !== index) slider.current?.slideTo(index);
             }}>
@@ -69,14 +74,14 @@ export default function Projects() {
                 <span className="art-symbol">{project.type === 'personal' ? '</>' : '{ }'}</span>
                 <span className="art-index">{String(index + 1).padStart(2, '0')}</span>
               </div>}
-              <span className="status">{project.status}</span>
+              <span className="status">{project.status === 'In Progress' ? '진행 중' : project.status}</span>
             </div>
             <div className="project-info">
               <span className="eyebrow">{project.type === 'personal' ? 'PERSONAL PROJECT' : 'TEAM PROJECT'}</span>
-              <h3>{project.title}<span aria-hidden="true">↗</span></h3>
+              <h3>{project.title}{project.detailEnabled !== false && <span aria-hidden="true">↗</span>}</h3>
               <p className="project-summary">{project.summary || '새로운 프로젝트를 준비하고 있습니다.'}</p>
               <div className="project-stack">{project.techStack.slice(0, 4).map(tech => <span key={tech}>{tech}</span>)}{project.techStack.length > 4 && <span>+{project.techStack.length - 4}</span>}</div>
-              <span className="project-detail-hint">프로젝트 상세 보기 <span aria-hidden="true">→</span></span>
+              <span className="project-detail-hint">{project.detailEnabled === false ? '개발 진행 중 · 상세 공개 예정' : <>프로젝트 상세 보기 <span aria-hidden="true">→</span></>}</span>
             </div>
           </button>
         </SwiperSlide>)}

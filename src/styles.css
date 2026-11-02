@@ -54,3 +54,4 @@
 .carousel-dots button[aria-current]:after{background:var(--blue);width:18px;left:4px}
 .carousel-caption{font-size:10px;color:#74839b;text-align:center;margin-top:12px;min-height:18px}
 @media(max-width:700px){.project-showcase{padding-top:12px;border-radius:10px}.project-coverflow .swiper-slide{width: min(300px,76vw)}.project-coverflow .project-card{height:450px}.project-coverflow .project-preview{height:180px}.project-coverflow .project-info{padding:19px}.project-coverflow .project-info h3{font-size:16px}.project-coverflow{padding-bottom:28px!important}.carousel-controls{gap:15px}}
+.project-coverflow .project-card[aria-disabled=true]{cursor:default}.project-card[aria-disabled=true] .project-detail-hint{color:#8793a5}

@@ -86,8 +86,28 @@ export const projects: Project[] = [
     ],
     githubUrl: 'https://github.com/HeoSeongbin/ConvertFlow',
   },
-  ...([{ type: 'team', number: 1 }] as const).map(({ type, number }) => ({
-    id: `${type}-${number}`, type, title: `Team Project 0${number}`,
-    status: 'Coming Soon' as const, summary: '', description: '', techStack: [], responsibilities: [], highlights: [],
-  })),
+  {
+    id: 'team-1',
+    hidden: false, // true로 바꾸면 카드와 필터 개수에서 제외됩니다.
+    type: 'team',
+    title: '태권도 채용 플랫폼',
+    status: 'In Progress',
+    detailEnabled: false,
+    summary: '태권도 분야 구직자와 기업을 연결하는 팀 프로젝트 · 구직자·이력서·지원·기업유저 백엔드 개발 참여',
+    description: '태권도 분야 구직자와 채용 기업을 연결하는 채용 플랫폼을 팀으로 개발하고 있습니다. 기능·정책 정의서를 바탕으로 구직자 정보, 이력서, 공고 지원 및 기업유저 관련 백엔드 기능의 수정·개선에 참여하고 있습니다. 프로젝트는 개발 진행 단계이며 전체 기능 구현과 통합 검증이 완료된 상태는 아닙니다.',
+    techStack: ['Java 17', 'Spring Boot', 'Spring Data JPA', 'Spring Security', 'JWT', 'Gradle'],
+    responsibilities: [
+      '구직자 정보 관련 백엔드 기능 수정·개선 참여',
+      '이력서 관련 API 및 데이터 처리 수정·개선 참여',
+      '공고 지원·지원 이력 관련 기능 수정·개선 참여',
+      '기업유저 관련 백엔드 기능 수정·개선 참여',
+    ],
+    highlights: [
+      '현재 소스에 이력서 등록·조회·수정·삭제·복제·대표 지정 및 파일 업로드 기능 구성',
+      '지원 시 이력서 소유권 확인, 지원·취소, 지원 목록 페이지 조회 및 전형 상태 이력 처리',
+      '공고 소유 기업의 지원자 상세 조회·상태 변경 권한 확인',
+      '기업 계정 가입·이메일 인증·로그인과 계정 상태 관리 로직 구성',
+      '기능·정책 정의서와 구현 범위를 대조하며 개발 진행 중',
+    ],
+  },
 ];

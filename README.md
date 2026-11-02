@@ -10,7 +10,7 @@
 | --- | --- |
 | About | 서비스 전체 흐름을 이해하며 개발하는 방식 |
 | Experience | 인콤(주) 근무 기간(2023.08–2026.08)의 구축·고도화·연동 경험 |
-| Projects | 공개 개인 프로젝트 4개와 준비 중인 팀 프로젝트 1개 |
+| Projects | 공개 개인 프로젝트 4개와 개발 진행 중인 태권도 채용 플랫폼 팀 프로젝트 |
 | Troubleshooting | 문제·분석·판단·해결·검증 순서의 운영 장애 대응 사례 |
 | Skills | 실제 사용 맥락에 따른 기술 분류 |
 | Development Approach | Build · Understand · Solve · Improve |
@@ -96,7 +96,8 @@ GitHub·이력서 주소가 비어 있으면 Hero 버튼은 숨기고 Contact에
   id: 'personal-5', // 중복되지 않는 ID
   type: 'personal', // 'personal' | 'team'
   title: '프로젝트 이름',
-  status: 'Published', // 'Published' | 'Coming Soon'
+  status: 'Published', // 'Published' | 'Coming Soon' | 'In Progress'
+  // detailEnabled: false, // 진행 중인 프로젝트의 상세 열기를 비활성화
   summary: '한 줄 소개',
   description: '목적과 주요 동작에 대한 설명',
   techStack: ['React', 'TypeScript'],
@@ -107,6 +108,14 @@ GitHub·이력서 주소가 비어 있으면 Hero 버튼은 숨기고 Contact에
 ```
 
 필터 개수와 상세 모달은 데이터에 따라 자동 반영됩니다. `githubUrl`·`demoUrl`이 있는 프로젝트만 해당 링크를 표시합니다. 준비 중인 프로젝트에는 미구현 기능이나 성과를 기재하지 않습니다.
+
+### 팀 프로젝트 숨기기
+
+`src/data/projects.ts`에서 `id: 'team-1'`인 항목의 `hidden: false`를 `hidden: true`로 변경합니다. 내용은 보존하면서 카드와 필터 개수에서 제외하며, 표시할 팀 프로젝트가 없으면 Team 필터도 숨깁니다. 다시 표시하려면 `false`로 되돌립니다.
+
+`detailEnabled: false`는 카드 소개를 유지하고 상세 열기만 비활성화하는 설정입니다. `hidden`은 카드 자체의 노출을 제어합니다. `hidden`을 생략한 프로젝트는 기본적으로 표시됩니다. 숨김 설정은 화면에서만 제외하므로 데이터는 공개 저장소와 빌드에 남을 수 있습니다.
+
+변경을 배포하려면 빌드 확인 후 커밋·push합니다.
 
 ## GitHub Pages 배포
 
