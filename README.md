@@ -14,7 +14,7 @@
 | Troubleshooting | 문제·분석·판단·해결·검증 순서의 운영 장애 대응 사례 |
 | Skills | 실제 사용 맥락에 따른 기술 분류 |
 | Development Approach | Build · Understand · Solve · Improve |
-| Contact | 이메일·GitHub 및 이력서 링크 영역 |
+| Contact | 이메일·GitHub 링크 영역 |
 
 ### 개인 프로젝트
 
@@ -85,7 +85,7 @@ src/
 | `src/data/troubleshooting.ts` | 문제 해결 사례의 단계별 설명 |
 | `src/data/skills.ts` | 기술 카테고리와 사용 맥락 |
 
-GitHub·이력서 주소가 비어 있으면 Hero 버튼은 숨기고 Contact에는 준비 중으로 표시합니다. Blog는 주소를 입력하면 Contact에 추가됩니다.
+GitHub 주소가 비어 있으면 Hero 버튼은 숨기고 Contact에는 준비 중으로 표시합니다. Blog는 주소를 입력하면 Contact에 추가됩니다.
 
 ### 프로젝트 추가
 
