@@ -10,7 +10,7 @@
 | --- | --- |
 | About | 서비스 전체 흐름을 이해하며 개발하는 방식 |
 | Experience | 인콤(주) 근무 기간(2023.08–2026.08)의 구축·고도화·연동 경험 |
-| Projects | 공개 개인 프로젝트 4개와 개발 진행 중인 태권도 채용 플랫폼 팀 프로젝트 |
+| Projects | 공개 개인 프로젝트 6개와 개발 진행 중인 태권도 채용 플랫폼 팀 프로젝트 |
 | Troubleshooting | 문제·분석·판단·해결·검증 순서의 운영 장애 대응 사례 |
 | Skills | 실제 사용 맥락에 따른 기술 분류 |
 | Development Approach | Build · Understand · Solve · Improve |
@@ -24,6 +24,8 @@
 | DocumentMask Studio | 이미지·PDF·TIFF 편집과 마스킹 결과 다운로드 도구 | [소스](https://github.com/HeoSeongbin/MaskingViewer) · [데모](https://heoseongbin.github.io/MaskingViewer/) |
 | InterfaceFlow Lab | 전문 검증·매핑, 장애 재현과 재시도·복구를 추적하는 연동 실험 플랫폼 | [소스 및 로컬 실행 안내](https://github.com/HeoSeongbin/interfaceflow-lab) |
 | ConvertFlow | 이미지·TIFF의 PDF 변환과 재시도·취소·Worker 장애 복구를 관리하는 비동기 문서 처리 플랫폼 | [소스 및 로컬 실행 안내](https://github.com/HeoSeongbin/ConvertFlow) |
+| CodeDiff Studio | 코드·폴더·JSON 비교, 필드 매핑과 검증된 Patch 생성 도구 | [소스](https://github.com/HeoSeongbin/CodeDiff-Studio) · [데모](https://heoseongbin.github.io/CodeDiff-Studio/) |
+| LogScope Studio | 혼합 로그 탐색, 예외 그룹·통계·요청 흐름 분석 도구 | [소스](https://github.com/HeoSeongbin/LogScope-Studio) · [데모](https://heoseongbin.github.io/LogScope-Studio/) |
 
 위 프로젝트는 각각 별도 저장소에서 관리합니다. 이 저장소에는 포트폴리오 웹사이트만 포함합니다.
 
@@ -93,7 +95,7 @@ GitHub 주소가 비어 있으면 Hero 버튼은 숨기고 Contact에는 준비 
 
 ```ts
 {
-  id: 'personal-5', // 중복되지 않는 ID
+  id: 'personal-7', // 중복되지 않는 ID
   type: 'personal', // 'personal' | 'team'
   title: '프로젝트 이름',
   status: 'Published', // 'Published' | 'Coming Soon' | 'In Progress'

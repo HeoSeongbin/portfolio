@@ -112,3 +112,8 @@ body:has(dialog[open]){overflow:hidden}
 }
 @media(max-width:700px){h1{word-break:keep-all;overflow-wrap:normal}}
 @media(max-width:480px){.hero-actions .button{gap:16px;padding:11px 14px}}
+.project-card-personal-5 .project-art{background:linear-gradient(135deg,#dcebf5,#f0f7fc 65%,#d3e6f4)}
+.project-card-personal-5 .art-symbol,.project-card-personal-5 .art-caption{color:#4b86ab}
+.project-card-personal-6 .project-art{background:linear-gradient(135deg,#e2eee4,#f3f9f4 65%,#d6e8da)}
+.project-card-personal-6 .art-symbol,.project-card-personal-6 .art-caption{color:#5a9168}
+@media(max-width:480px){.carousel-controls{gap:8px}.carousel-dots button{width:24px}.carousel-dots button:after{left:9px}.carousel-dots button[aria-current]:after{left:3px}}
